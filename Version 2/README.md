@@ -495,3 +495,46 @@ db.session.commit()
 print(f"Updated {len(issues_to_update)} issues with search data!")
 
 
+Make a User a Moderator
+
+This script finds a user by their username and sets their is_moderator flag to True.
+# First, manually import what you need
+from app.models import User
+from app import db
+
+# Find the user
+user = User.query.filter_by(username='THE_USERNAME_HERE').first()
+
+# If the user is found, update and save the change
+if user:
+    user.is_moderator = True
+    db.session.commit()
+    print(f"Success! User '{user.username}' is now a moderator.")
+else:
+    print("User not found.")
+
+
+Generate Search Embeddings for All Existing Issues
+
+If you add issues to the database manually or need to regenerate search data, this script will create embeddings for all issues that are missing them.
+
+# First, manually import what you need
+import sqlalchemy as sa
+from app.models import Issue
+from app import db
+
+# Find all issues without an embedding
+issues_to_update = db.session.scalars(sa.select(Issue).where(Issue.embedding == None)).all()
+
+# Loop through them and generate the embedding
+for issue in issues_to_update:
+    print(f"Generating embedding for: '{issue.category}'")
+    issue.generate_and_set_embedding()
+
+# Commit all the changes to the database
+db.session.commit()
+
+print(f"Updated {len(issues_to_update)} issues with search data!")
+
+
+
