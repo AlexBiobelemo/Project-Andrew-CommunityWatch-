@@ -163,7 +163,7 @@ Follow these detailed steps to get CommunityWatch running on your local machine.
 Start by downloading the source code from the project’s GitHub repository.
 
 ```bash
-git clone https://github.com/AlexBiobelemo/Project-Andrew-CommunityWatch-/
+git clone https://github.com/AlexBiobelemo/Project-Andrew-CommunityWatch-/tree/main/Version%202
 cd communitywatch
 ```
 
