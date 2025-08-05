@@ -43,8 +43,7 @@ To run this project locally, follow these steps:
 
 **1. Clone the Repository**
 ```bash
-git clone <your-repository-url>
-cd community_watch
+git clone https://github.com/AlexBiobelemo/Project-Andrew-CommunityWatch-/tree/main/Version%201
 
 2. Create and Activate Virtual Environment
 # Windows
@@ -73,7 +72,9 @@ flask run
 The application will be available at http://127.0.0.1:5000.
 🔧 Management & Maintenance
 The following are useful scripts to run inside the Flask shell (flask shell) for administrative tasks.
+
 Make a User a Moderator
+
 This script finds a user by their username and sets their is_moderator flag to True.
 # First, manually import what you need
 from app.models import User
@@ -92,6 +93,7 @@ else:
 
 Generate Search Embeddings for All Existing Issues
 If you add issues to the database manually or need to regenerate search data, this script will create embeddings for all issues that are missing them.
+
 # First, manually import what you need
 import sqlalchemy as sa
 from app.models import Issue
